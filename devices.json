@@ -1,0 +1,34 @@
+{
+	"DEVICES" : {
+		"j5nlte" : {
+			"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/j5nlte.json",
+			"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/j5nlte.json"
+		},
+
+		"j5lte" : {
+			"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/j5lte.json",
+			"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/j5lte.json"
+
+		},
+
+		"j53gxx" : {
+			"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/j53gxx.json",
+			"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/j53gxx.json"
+
+		},
+
+		"j5ltechn" : {
+			"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/j5lte.json",
+			"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/j5ltechn.json"
+
+		},
+
+		"j5xnlte" : {
+			"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/j5xnlte.json",
+			"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/j5xnlte.json"
+
+		}
+
+
+	}
+}
