@@ -42,8 +42,13 @@ class Check:
     def download_latest_json(self) :
 
         # Remove previous json is exists
+        
         if exists("%s.json" % self.codename) :
-            os.system("del /f %s.json" % self.codename)
+            if platform.system() == "Windows" :
+                os.system("del /f %s.json" % self.codename)
+            else :
+                os.system("rm %s.json" % self.codename)
+
 
         # Download LineageOS 18.1 JSON
         if self.R :
@@ -95,14 +100,21 @@ class Check:
                 # Check if file doesn't exist before downloading
                 self.filename = self.json_file["response"]["filename"]
                 if exists("%s/%s" % (self.ota_path, self.filename)) :
-                    os.system("cd downloads & del /f %s" % self.filename)
+                    if platform.system() == "Windows" :
+                        os.system("cd downloads & del /f %s" % self.filename)
+
+                    else :
+                        os.system("rm %s" % self.filename)
 
                 # Download OTA file
                 self.ota_path = self.ota_path + "/" + self.filename
                 self.downloading = True
 
-                file = os.system("cd binaries & wget.exe -O %s.zip %s" % (self.filename, self.json_file["response"]["url"]))
-                os.system("cd binaries & move %s.zip ../%s" % (self.filename, self.ota_path))
+                if platform.system()== "Windows" :
+                    file = os.system("cd binaries & wget.exe -O %s.zip %s" % (self.filename, self.json_file["response"]["url"]))
+                    os.system("cd binaries & move %s.zip ../%s" % (self.filename, self.ota_path))
+                else :
+                    wget.download("%s" % self.json_file["response"]["url"], "ota.zip" )
 
                 # Stop downloading the ota :) We're inside a loop
                 self.update_available = False

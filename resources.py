@@ -1,6 +1,8 @@
 import os
 os.system("pip install pygame")
 os.system("pip3 install pygame")
+os.system("pip install wget")
+os.system("pip3 install wget")
 
 import pygame
 import json
