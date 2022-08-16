@@ -37,9 +37,6 @@ SMALLEST_FONT = pygame.font.SysFont('comicsans', 20)
 
 ## Game Values
 FPS = 60
-MAX_CARDS = 108
-INITIAL_CARDS = 7
-MAX_TURN_TIME = 30
 clock = pygame.time.Clock()
 small_font = pygame.font.Font(None, 35)
 smallest_font = pygame.font.Font(None, 30)
