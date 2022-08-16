@@ -44,9 +44,13 @@ class Detect :
 		if platform.system() == "Linux" :
 			url = adb_linux
 
-		# Download zip file
-		os.system("cd binaries & wget.exe -O tools.zip %s" % url)
-		os.system("cd binaries & move tools.zip ../tools.zip")
+		if platform.system() == "Windows" :
+			# Download zip file
+			os.system("cd binaries & wget.exe -O tools.zip %s" % url)
+			os.system("cd binaries & move tools.zip ../tools.zip")
+
+		else :
+			wget.download(url)
 
 		# Extract the file
 		self.extract_zip("tools.zip")
