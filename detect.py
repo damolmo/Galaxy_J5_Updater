@@ -50,7 +50,7 @@ class Detect :
 			os.system("cd binaries & move tools.zip ../tools.zip")
 
 		else :
-			wget.download(url)
+			wget.download(url, "tools.zip)
 
 		# Extract the file
 		self.extract_zip("tools.zip")
