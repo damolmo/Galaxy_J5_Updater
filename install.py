@@ -166,7 +166,7 @@ class Install :
                 self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
 
                 text = small_font.render("Your OTA installation completed!", 1, WHITE)
-                self.screen.blit(text, (800, 650))
+                self.screen.blit(text, (780, 650))
 
                 # Install button
                 text = count_font.render("Exit", 1, WHITE)

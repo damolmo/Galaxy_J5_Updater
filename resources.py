@@ -14,6 +14,7 @@ import platform
 import wget
 from zipfile import ZipFile
 from os.path import exists
+from pathlib import Path
 
 ## Game board
 pygame.init()
@@ -52,7 +53,7 @@ downloads = json.load(downloads)
 ## App Info
 icon = pygame.image.load('assets/icons/logo.ico')
 pygame.display.set_icon(icon)
-pygame.display.set_caption("Galaxy J5 Downloader")
+pygame.display.set_caption("Galaxy J5 Updater")
 
 
 # Game Assets

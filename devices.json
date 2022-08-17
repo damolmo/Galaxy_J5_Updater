@@ -30,5 +30,10 @@
 		}
 
 
+	},
+
+	"CHANGELOG" : {
+		"R" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-18.1/changelog.txt",
+		"S" : "https://github.com/Galaxy-J5-Unofficial-LineageOS-Sources/OTA-Updates/raw/lineage-19.0/changelog.txt"
 	}
 }
