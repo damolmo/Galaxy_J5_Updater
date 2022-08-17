@@ -1,4 +1,4 @@
-<img src = "assets/logo/logo.png" height="250" width="600">  <br/>
+<img src = "assets/icons/logo.ico" height="250" width="600">  <br/>
 
 Desktop UI for downloading and installing latest OTA updates for your J5 device
 
