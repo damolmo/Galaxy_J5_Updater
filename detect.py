@@ -15,7 +15,7 @@ class Detect :
 		self.loader_rs = [loader_01, loader_02, loader_03, loader_04, loader_05, loader_06, loader_07, loader_08]
 		self.loader_anim = loader_01
 		self.adb_wait_counter = 0
-		self.allow_devices = ["j5nlte", "j5lte", "j5ltechn", "j5xnlte", "j53gxx"]
+		self.allow_devices = ["j5nlte", "j5lte", "j5ltechn", "j5xnlte", "j53gxx", "j53g"]
 
 
 	# Methods for downloading Google Platform-Tools
