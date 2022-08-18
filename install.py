@@ -15,7 +15,7 @@ class Install :
         self.loader_anim = loader_01
         self.loader_rs = [loader_01, loader_02, loader_03, loader_04, loader_05, loader_06, loader_07, loader_08]
         self.model = ''
-        self.allow_devices = ["j5nlte", "j5lte", "j5ltechn", "j5xnlte", "j53gxx", "j53g"]
+        self.allow_devices = ["j5nlte", "j5nltexx ", "j5lte", "j5ltedx", "j5ltedo", "j5ltekx" , "j5lteub" , "j5ltexx" , "j5ltezt" , "j5ylte" , "j5ltechn" , "j5ltezm" , "j5xnlte", "j5xlte," "j53gxx", "j53g"]
         self.sideload_counter = 0
         self.reboot_system = False
         self.reboot_counter = 500

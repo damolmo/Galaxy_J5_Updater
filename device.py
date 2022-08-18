@@ -11,6 +11,7 @@ class Device :
 		self.resume = True
 		self.current_anim = los
 		self.download_rect = pygame.Rect(1000, 780, 444, 80)
+		self.abort = False
 
 	def draw(self) :
 
@@ -127,6 +128,7 @@ class Device :
 
 				if event.type == pygame.QUIT:
 					self.resume = False
+					self.abort = True
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
 					self.check_click(event.pos)
@@ -158,6 +160,7 @@ class Device :
 			thread_2.join()
 			thread_3.join()
 
-		# Search for updates
-		check = Check()
-		check.updates(codename)
+		if not self.abort :
+			# Search for updates
+			check = Check()
+			check.updates(codename)
