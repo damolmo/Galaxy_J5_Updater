@@ -21,10 +21,12 @@ class Main :
 
 				# Remove previous version if exists
 				os.system("del installer.exe")
+				os.system("del version.txt")
 
 				# Download version text file
 				if platform.system() == "Windows" :
 					os.system("cd binaries & wget.exe -O version.txt %s" % self.version_url)
+					os.system("cd binaries & move version.txt ../version.txt")
 
 				else :
 					wget.download(self.version_url)
@@ -33,7 +35,7 @@ class Main :
 				version = Path('version.txt').read_text()
 
 				# Compare the current version vs the new version
-				if version < self.version :
+				if version > self.version :
 					# This means we're outdated
 					# We'll download the newest version
 					url = "https://github.com/daviiid99/Galaxy_J5_Updater/releases/download/v%s/Galaxy.J5.Updater.-.Installer.exe" % version
