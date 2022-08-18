@@ -44,7 +44,7 @@ class Device :
 			self.screen.blit(button, (1200, 370))
 			device = smallest_font.render("J5 Model", 1, WHITE	)
 			self.screen.blit(device, (1020, 400))
-			model = self.catch_device_info("ro.product.bootimage.model")
+			model = self.catch_device_info("ro.product.model")
 			text = small_font.render(model, 1, BLACK)
 			self.screen.blit(text, (1210, 400))
 			

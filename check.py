@@ -70,12 +70,12 @@ class Check:
             # Download latest json
             wget.download(downloads["DEVICES"][self.codename]["S"])
 
-            # Save and load json
-            self.json_file = open("%s.json" % self.codename)
-            self.json_file = json.load(self.json_file)
+        # Save and load json
+        self.json_file = open("%s.json" % self.codename)
+        self.json_file = json.load(self.json_file)
 
-            # Download latest ota
-            self.download_latest_ota()
+        # Download latest ota
+        self.download_latest_ota()
 
     def download_latest_ota(self) :
 

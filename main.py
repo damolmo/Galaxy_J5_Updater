@@ -8,7 +8,7 @@ class Main :
 		self.running = True
 		self.screen_rect = self.screen.get_rect()
 		self.clock = pygame.time.Clock()
-		self.version = "1.3"
+		self.version = "1.3.1"
 		self.version_url = "https://github.com/daviiid99/Galaxy_J5_Updater/raw/master/version.txt"
 		self.check_for_updates = False
 		self.update_rect = pygame.Rect(1375, 250, 231, 83)

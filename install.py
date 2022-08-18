@@ -122,10 +122,10 @@ class Install :
 
                 # Searching device dialog
                 text = small_font.render("Searching ADB devices", 1, WHITE)
-                self.screen.blit(text, (1000, 350))
+                self.screen.blit(text, (980, 350))
                 self.screen.blit(self.loader_anim, (1085, 400))
 
-            if self.installing:
+            if self.installing :
                 self.screen.fill(GREEN)
                 self.screen.blit(pygame.transform.scale(render, (1050, 700)), (100, 200))
                 self.screen.blit(self.loader_anim, (1085, 400))
@@ -135,12 +135,17 @@ class Install :
 
                 # Searching device dialog
                 if not self.start_sideloading :
-                    text = small_font.render("Starting ADB sideload", 1, WHITE)
-                    self.screen.blit(text, (1000, 350))
+                    text = small_font.render("Connecting to ADB sideload", 1, WHITE)
+                    self.screen.blit(text, (980, 350))
 
                 else :
                     text = small_font.render("Flashing OTA file", 1, WHITE)
-                    self.screen.blit(text, (1000, 350))
+                    self.screen.blit(text, (1015, 350))
+
+                    text = smallest_font.render("Check your device screen for installation progress", 1, WHITE)
+                    self.screen.blit(text, (1015, 600))
+                    text = smallest_font.render("Don't close the application until installation succeeds", 1, WHITE)
+                    self.screen.blit(text, (1015, 640))
 
                     self.screen.blit(self.loader_anim, (1085, 400))
 
