@@ -22,6 +22,8 @@ class Install :
         self.start_sideloading = False
         self.sideload_rect = pygame.Rect(1000, 800, 231, 83)
         self.exit_rect = pygame.Rect(840, 700, 231, 83)
+        self.current_anim = los
+        self.final_anim = False
 
 
     def loader(self) :
@@ -97,6 +99,7 @@ class Install :
 
                 if self.reboot_counter == 0 :
                     push = os.system("cd platform-tools & adb sideload ../%s" % file)
+                    self.final_anim = True
                     self.installing = False
                     self.reboot_system = True
 
@@ -123,12 +126,15 @@ class Install :
                 # Searching device dialog
                 text = small_font.render("Searching ADB devices", 1, WHITE)
                 self.screen.blit(text, (980, 350))
-                self.screen.blit(self.loader_anim, (1085, 400))
+                if not self.start_sideloading :
+                    self.screen.blit(self.loader_anim, (1085, 400))
 
             if self.installing :
                 self.screen.fill(GREEN)
                 self.screen.blit(pygame.transform.scale(render, (1050, 700)), (100, 200))
-                self.screen.blit(self.loader_anim, (1085, 400))
+
+                if not self.sideloading :
+                    self.screen.blit(self.loader_anim, (1085, 400))
 
                 text = small_font.render("Aborting Operation in : %d" % self.reboot_counter, 1, WHITE)
                 self.screen.blit(text, (1250, 250))
@@ -139,17 +145,18 @@ class Install :
                     self.screen.blit(text, (980, 350))
 
                 else :
-                    text = small_font.render("Flashing OTA file", 1, WHITE)
-                    self.screen.blit(text, (1015, 350))
+                    self.screen.fill(BLACK)
+                    self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (420, 350))
 
+                    text = small_font.render("Flashing OTA file..", 1, WHITE)
+                    self.screen.blit(text, (865, 650))
                     text = smallest_font.render("Check your device screen for installation progress", 1, WHITE)
-                    self.screen.blit(text, (1015, 600))
+                    self.screen.blit(text, (720, 750))
                     text = smallest_font.render("Don't close the application until installation succeeds", 1, WHITE)
-                    self.screen.blit(text, (1015, 640))
-
-                    self.screen.blit(self.loader_anim, (1085, 400))
+                    self.screen.blit(text, (707, 790))
 
                 if self.sideload_counter >=20 and not self.sideloading and not self.start_sideloading  :
+                    self.screen.blit(self.loader_anim, (1085, 400))
                     text_1 = smallest_font.render("Are you stuck?", 1, WHITE)
                     self.screen.blit(text_1, (1070, 550))
 
@@ -167,18 +174,37 @@ class Install :
 
             if self.reboot_system :
                 self.screen.fill(BLACK)
-                self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_139_delay-0.05s.gif")), (1000, 400))
-                self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
 
-                text = small_font.render("Your OTA installation completed!", 1, WHITE)
-                self.screen.blit(text, (780, 650))
+                self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (440, 350))
 
-                # Install button
-                text = count_font.render("Exit", 1, WHITE)
-                self.screen.blit(button_lineage, (850, 700))
-                self.screen.blit(text, (930, 720))
+                if not self.final_anim :
+                    text = small_font.render("Your OTA installation succeed!", 1, WHITE)
+                    self.screen.blit(text, (805, 680))
+
+                    # Install button
+                    text = count_font.render("Exit", 1, WHITE)
+                    self.screen.blit(button_lineage, (875, 730))
+                    self.screen.blit(text, (950, 750))
 
             pygame.display.update()
+
+    def anim(self) :
+        while self.running :
+
+            if self.start_sideloading:
+
+                for anim in range(121,240) :
+                    self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/loading", "00%d.png" % anim)), (650, 180))
+                    self.clock.tick(60)
+
+            if self.final_anim :
+                for anim in range(241,460) :
+                    self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/completed", "00%d.png" % anim)), (650, 180))
+                    self.clock.tick(60)
+
+                    if anim == 459 :
+                        self.final_anim = False
+                        self.start_sideloading = False
 
 
     def start_installation(self, file) :
@@ -190,6 +216,7 @@ class Install :
         thread_4 = threading.Thread(target = self.reboot_recovery)
         thread_5 = threading.Thread(target = self.adb_detect)
         thread_6 = threading.Thread(target = self.adb_sideload, args=([file]))
+        thread_7 = threading.Thread(target = self.anim, name="anim")
 
 
         # Start threads
@@ -199,6 +226,7 @@ class Install :
         thread_4.start()
         thread_5.start()
         thread_6.start()
+        thread_7.start()
 
         start = self.controller()
 
@@ -210,4 +238,5 @@ class Install :
             thread_4.join()
             thread_5.join()
             thread_6.join()
+            thread_7.join()
 

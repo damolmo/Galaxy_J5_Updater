@@ -236,41 +236,42 @@ class Check:
 
             # LineageOS loading animation
             if not self.up_to_date and not self.ota_complete and not self.reading_changelog:
-                self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
+                self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (440, 350))
 
             elif self.up_to_date :
-                self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_139_delay-0.05s.gif")), (1000, 400))
-                self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
+                self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/completed", "00383.png")), (1000, 400))
+                self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (440, 350))
 
                 text = small_font.render("Your system is up-to-date", 1, WHITE)
-                self.screen.blit(text, (800, 650))
+                self.screen.blit(text, (830, 650))
+
                 # Install button
                 text = count_font.render("Exit", 1, WHITE)
-                self.screen.blit(button_lineage, (840, 700))
-                self.screen.blit(text, (920, 720))
+                self.screen.blit(button_lineage, (870, 700))
+                self.screen.blit(text, (950, 720))
 
 
             if not self.update_available and not self.up_to_date and not self.downloading and not self.reading_changelog :
                 text = small_font.render("Looking for updates..", 1, WHITE)
-                self.screen.blit(text, (830, 650))
+                self.screen.blit(text, (865, 650))
 
             if self.update_available and not self.up_to_date and not self.downloading and not self.reading_changelog and not self.check_changelog :
                 text = small_font.render("A new update was found..", 1, WHITE)
-                self.screen.blit(text, (827, 650))
+                self.screen.blit(text, (850, 650))
 
             if self.update_available and self.check_changelog :
                 text = small_font.render("Downloading new changelog..", 1, WHITE)
                 self.screen.blit(text, (815, 650))
 
             if self.reading_changelog :
-                self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_139_delay-0.05s.gif")), (1000, 400))
-                self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 100))
+                self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/completed", "00383.png")), (1000, 400))
+                self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (445, 150))
 
-                text = small_font.render("A new LineageOS update is available!", 1, WHITE)
-                self.screen.blit(text, (750, 400))
+                text = smallest_font.render("A new LineageOS update is available!", 1, WHITE)
+                self.screen.blit(text, (790, 455))
 
-                text = small_font.render("Changelog", 1, WHITE)
-                self.screen.blit(text, (900, 465))
+                text = count_font.render("Changelog", 1, WHITE)
+                self.screen.blit(text, (892, 495))
 
                 height = 550
 
@@ -286,31 +287,31 @@ class Check:
 
                 # Decline
                 text = count_font.render("Decline", 1, WHITE)
-                self.screen.blit(button_lineage, (1038, 800))
-                self.screen.blit(text, (1080, 820))
+                self.screen.blit(button_decline, (1038, 800))
+                self.screen.blit(text, (1085, 820))
 
 
             # Download message
             if self.downloading and not self.ota_complete and not self.check_changelog :
                 text = small_font.render("Downloading LineageOS OTA", 1, WHITE)
-                self.screen.blit(text, (780, 650))
+                self.screen.blit(text, (815, 650))
 
 
             # Ota downloaded message
             if self.ota_complete :
 
                 if self.final_anim :
-                    self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
+                    self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (440, 350))
 
                 if not self.final_anim :
-                    self.screen.blit(pygame.transform.scale(self.current_anim, (800, 470)), (570, 300))
+                    self.screen.blit(pygame.transform.scale(self.current_anim, (1080, 360)), (440, 350))
                     text = small_font.render("OTA file is ready to install!", 1, WHITE)
-                    self.screen.blit(text, (800, 650))
+                    self.screen.blit(text, (820, 680))
 
                     # Install button
                     text = count_font.render("Install", 1, WHITE)
-                    self.screen.blit(button_lineage, (840, 700))
-                    self.screen.blit(text, (905, 720))
+                    self.screen.blit(button_lineage, (865, 730))
+                    self.screen.blit(text, (930, 750))
 
 
             pygame.display.update()
@@ -320,23 +321,19 @@ class Check:
 
             if not self.up_to_date and not self.final_anim and not self.ota_complete :
 
-                for anim in range(20,38) :
+                for anim in range(121,240) :
                     if self.checking :
-                        self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_0%d_delay-0.05s.gif" % anim)), (1000, 400))
-                        self.clock.tick(12)
+                        self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/loading", "00%d.png" % anim)), (650, 180))
+                        self.clock.tick(60)
 
             if self.final_anim :
-                for anim in range(20,140) :
+                for anim in range(241,460) :
                     if self.checking :
-                        if anim < 100 :
-                            self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_0%d_delay-0.05s.gif" % anim)), (1000, 400))
-                            self.clock.tick(12)
+                        
+                            self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/bootanimation/completed", "00%d.png" % anim)), (650, 180))
+                            self.clock.tick(60)
 
-                        else :
-                            self.current_anim = pygame.transform.scale(pygame.image.load(os.path.join("assets/anim", "frame_%d_delay-0.05s.gif" % anim)), (1000, 400))
-                            self.clock.tick(12)
-
-                            if anim == 139 :
+                            if anim == 459 :
                                 self.final_anim = False
 
 

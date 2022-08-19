@@ -81,6 +81,7 @@ button = pygame.image.load(os.path.join("assets/icons", "button.png"))
 button_dark = pygame.image.load(os.path.join("assets/icons", "button_dark.png"))
 button_green = pygame.image.load(os.path.join("assets/icons", "button_green.png"))
 button_lineage = pygame.image.load(os.path.join("assets/icons", "button_lineage.png"))
+button_decline = pygame.image.load(os.path.join("assets/icons", "button_decline.png"))
 
 # Android logo
 aosp = pygame.transform.scale(pygame.image.load(os.path.join("assets/icons", "aosp.png")), (150, 80))
