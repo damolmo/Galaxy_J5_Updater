@@ -14,6 +14,7 @@ class Check:
         self.timestamp = 0
         self.R = False
         self.S = False
+        self.T = False
         self.json_file = downloads
         self.update_available = False
         self.up_to_date = False
@@ -44,8 +45,11 @@ class Check:
             # Since upgrading from one os to a higher version is experimental, we'll not show a 12 entry
             self.R = True
 
-        else :
+        elif "12" in self.os :
             self.S = True
+
+        elif "13" in self.os :
+            self.T = True
 
 
     def download_latest_json(self) :
@@ -65,10 +69,13 @@ class Check:
             # Download latest json
             wget.download(downloads["DEVICES"][self.codename]["R"])
 
-        else :
-
+        elif self.S :
             # Download latest json
             wget.download(downloads["DEVICES"][self.codename]["S"])
+
+        elif self.T :
+            # Download latest json
+            wget.download(downloads["DEVICES"][self.codename]["T"])
 
         # Save and load json
         self.json_file = open("%s.json" % self.codename)
@@ -116,8 +123,11 @@ class Check:
                 if self.R :
                     self.changelog_url = downloads["CHANGELOG"]["R"]
 
-                else :
+                elif self.S :
                     self.changelog_url = downloads["CHANGELOG"]["S"]
+
+                elif self.T :
+                    self.changelog_url = downloads["CHANGELOG"]["T"]
 
                 # Remove previous changelog if exists
                 if exists("changelog.txt") :

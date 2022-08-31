@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Galaxy J5 Updater"
-#define MyAppVersion "1.4"
+#define MyAppVersion "1.5"
 #define MyAppPublisher "daviiid99"
 #define MyAppURL "https://www.example.com/"
 #define MyAppExeName "Galaxy J5 Updater.exe"
